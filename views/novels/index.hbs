@@ -1,0 +1,24 @@
+<h1>Books Collection </h1>
+
+<a href="novels/add"> Add a New novel</a>
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Book</th>
+        <th>Priority</th>
+        <th>Complete</th>
+        <th>Actions</th>
+    </tr>
+
+    {{#each novels}}
+    <tr>
+        <td> {{this.book}} </td>
+        <td> {{this.priority}} </td>
+        <td> {{this.complete}} </td>
+        <td>
+            <a href="/novels/edit/{{ this._id }}"> Edit </a>|
+            <a href="/novels/delete/{{ this._id }}" class="text-danger delete"> Delete </a>
+        </td>
+    </tr>
+    {{/each}}
+
+</table>

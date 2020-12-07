@@ -16,6 +16,7 @@ const global = require('./config/global')
 mongoose.connect(global.db,
     {
         useNewUrlParser: true,
+        useUnifiedTopology: true
     }).then(
         (res) => {
             console.log('Connected to MongoDB')
