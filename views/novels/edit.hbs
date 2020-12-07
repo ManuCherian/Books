@@ -1,0 +1,42 @@
+<h1> Edit novels Details</h1>
+
+<form method="post">
+    <fieldset class="form-group">
+        <label class="control-label col-md-2"> book: *</label>
+        <input book="book" id="book" required value="{{ novel.book }}" />
+    </fieldset>
+   
+    <fieldset class="form-group">
+        <label class="control-label col-md-2"> Priority: *</label>
+        <select book="priority" id="priority">
+            <script>
+                //ref the selected element
+                var priority = document.getElementById('priority')
+                for (var i = 1; i <= 5; i++)
+                {
+                    
+                    var option = document.createElement('option')
+                    
+                    option.innerHTML = i.toString()
+                    
+                    if ({{novel.priority}} == i.toString())
+                    {
+                        option.selected = true
+                    }
+                    
+                    priority.append(option)
+                }
+            </script>
+        </select>
+    </fieldset>
+    <fieldset>
+        <label class="control-label col-md-2">Complete: </label>
+        {{#if novel.complete}}
+        <input type="checkbox" id="complete" book="complete" checked="checked" />
+        {{else}}
+        <input type="checkbox" id="complete" book="complete" />
+        {{/if}}
+    </fieldset>
+    <input type="hidden" book="_id" id="_id" value="{{novels._id}}" />
+    <button class="col-md-offset-2 btn btn-primary">Save</button>
+</form>

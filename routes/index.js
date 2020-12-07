@@ -18,4 +18,9 @@ router.get('/register', function (req, res, next) {
     res.render('register', { title: ' register' });
 });
 
+router.get('/add', (req, res, next) => {
+    res.render('novels/add', {message : 'add new novel'})
+});
+
+
 module.exports = router;

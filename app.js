@@ -7,10 +7,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var novelsRouter = require('./routes/novels');
+
 var app = express();
+
 const mongoose = require('mongoose')
-const globals = require('./config/globals')
-mongoose.connect('mongodb + srv://dbManu:<db49College#>@books.r8on9.mongodb.net/novel'
+const global = require('./config/global')
+mongoose.connect(global.db,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -21,6 +24,7 @@ mongoose.connect('mongodb + srv://dbManu:<db49College#>@books.r8on9.mongodb.net/
     ).catch(() => {
         console.log('No Connection to MongoDB')
     })
+    
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -33,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/novels', novelsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
